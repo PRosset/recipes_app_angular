@@ -27,4 +27,9 @@ router.get('/', function(req, res, next) {
   }).end()
 });
 
+// Recipe from external API
+router.get('/yummly/:keyword', function (req, res, next) {
+	var options = {}
+})
+
 module.exports = router;
