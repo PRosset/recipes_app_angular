@@ -2,15 +2,15 @@ angular.module("recipesApp", ["ui.router"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/recipes")
     $stateProvider
     .state("home", {
         url: "/home",
-        template: "<h3>Here's angular ui-router</h3>"
+        template: "<h3>This is the home view</h3>"
     })
-    .state("index", {
-        usrl: "/index",
-        template: "<index></index>"
+    .state("recipes", {
+        url: "/recipes",
+        template: "<index-page></index-page>"
     })
     .state("form", {
         url: "/form",

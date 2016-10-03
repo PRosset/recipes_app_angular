@@ -1,20 +1,22 @@
 angular.module("recipesApp")
-.component("index", {
+.component("indexPage", {
     template: `
-        <p>{{$ctrl.recipe.name}}</p>
-        <p>{{$ctrl.recipe.serving_size}}</p>
-        <p ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</p>
-        <p ng-repeat="direction in $ctrl.recipe.directions">{{direction}}</p>
+        <h1>This is the recipes view</h1>
+        <div ng-repeat="recipe in $ctrl.recipes">
+            <p>{{recipe.name}}</p>
+            <p>{{recipe.serving_size}}</p>
+            <p ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</p>
+            <p ng-repeat="instruction in recipe.instructions">{{instruction}}</p>
+        </div>
     `,
-    controller: function ($http) {
-        this.that = this;
+    controller: function (httpService) {
+        var that = this;
         this.recipes = null;
-        this.getRecipes = function() {
-            return $http.get("localhost:3000/recipes/")
-        }
-        this.getRecipes()
+        
+        httpService.indexRecipes()
         .then(function(res) {
-            this.that.recipes = res;
+            console.log(res.data);
+            that.recipes = res.data;
         })
     }
 });
