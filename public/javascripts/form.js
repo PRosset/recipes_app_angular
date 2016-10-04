@@ -27,10 +27,10 @@ angular.module("recipesApp")
                 <p>Source URL: {{$ctrl.source_url}}</p>
                 <input type="hidden" ng-model="$ctrl.source_url">
                 
-                <p>Source URL: {{$ctrl.health_labels}}</p>
+                <p>Health Labels: {{$ctrl.health_labels}}</p>
                 <input type="hidden" ng-model="$ctrl.health_labels">
                 
-                <p ng-repeat="ingredient in $ctrl.ingredients">{{ingredient}}</p>
+                <p ng-repeat="ingredient in $ctrl.ingredients track by $index">{{ingredient}}</p>
                 <input type="hidden" ng-model="$ctrl.ingredients">
                 
                 <label>Instructions</label>
