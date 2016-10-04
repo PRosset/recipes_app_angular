@@ -13,6 +13,9 @@ angular.module("recipesApp")
     	return $http.get("/api/yummly-id/" + id);
     }
     this.addRecipe = function (recipe) {
-        return $http.post("/api", recipe);
+        return $http.post("/api/recipe", recipe);
+    }
+    this.saveNote = function (note) {
+        return $http.post("/api/note", note);
     }
 })

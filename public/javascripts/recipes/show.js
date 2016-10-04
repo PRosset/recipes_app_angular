@@ -21,13 +21,16 @@ angular.module("recipesApp")
       <h2>Instructions</h2>
       <div  class="instruction"
             ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
-            ng-click="$ctrl.addNote($event)" >
+            ng-click="$ctrl.addNote($index)" >
         <div class="direction">
           <h3>{{$index}}: {{instruction}}</h3>
         </div>
         <div class="noteHolder">
           <div class="note"></div>
-          <div class="note1"></div>
+        </div>
+        <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
+          <input ng-model="$ctrl.noteText">
+          <button ng-click="$ctrl.saveNote($index)">Add note</button>
         </div>
       </div>
     </div>
@@ -38,12 +41,23 @@ angular.module("recipesApp")
 
     this.addingNote = false;
 
+    this.instForNote = null;
+
     this.toggleAddingNote = function() {
       this.addingNote = this.addingNote == false ? true : false;
     }
 
-    this.addNote = function(event) {
-      // $(event.currentTarget).
+    this.addNote = function(index) {
+      // $(event.currentTarget).children(".noteEnter").addClass("enterActive");
+      this.instForNote = index;
+    }
+
+    this.saveNote = function(index) {
+      var note = {
+        text: this.noteText,
+        instruction: index
+      }
+      httpService.saveNote(note)
     }
 
     httpService.getRecipe($stateParams.id)
