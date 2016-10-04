@@ -19,7 +19,7 @@ a {
   border-right: 2px #0343AA solid;
   width: 10%;
   height: 100vh;
-  transition: .25s;
+  transition: .2s;
 }
 .navBar:hover {
   width: 10.25%;
@@ -29,42 +29,7 @@ a {
   text-transform: uppercase;
 }
 
-.navLinks {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding-top: 20px;
-}
 
-.navLinks li {
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  width: 100px;
-}
-
-.navLinks li a {
-  text-decoration: none;
-  color: #B02E0C;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: .5s;
-}
-
-.navLinks li a:hover {
-  color: #E9E8EA;
-  padding-bottom: 10px;
-  border-bottom: 1px #E9E8EA solid;
-}
-
-.iconSVG {
-  fill: #B02E0C;
-  width: 25%;
-}
 
 /* SPLASH PAGE */
 
@@ -77,4 +42,34 @@ a {
   z-index: -1;
   background-image:url('/images/splashpage_img.jpeg');
   background-size: 100%;
+}
+
+
+/* TEST */
+
+.SVGicon {
+  fill: #B02E0C;
+  width: 25%;
+  transition: .5s;
+}
+.navLink {
+  padding-top: 20px;
+  color: #B02E0C;
+  transition: .5s;
+  cursor: pointer;
+}
+.navLink h4 {
+  padding: 0;
+  margin: 5px;
+  transition: .5s;
+  text-transform: uppercase;
+}
+.navLink:hover h4 {
+  color: #E9E8EA;
+  transform: scale(1.1);
+}
+
+.navLink:hover .SVGicon {
+  fill: #E9E8EA;
+  transform: scale(1.1);
 }
