@@ -27,6 +27,9 @@ angular.module("recipesApp")
                 <p>Source URL: {{$ctrl.source_url}}</p>
                 <input type="hidden" ng-model="$ctrl.source_url">
                 
+                <p>Source URL: {{$ctrl.health_labels}}</p>
+                <input type="hidden" ng-model="$ctrl.health_labels">
+                
                 <p ng-repeat="ingredient in $ctrl.ingredients">{{ingredient}}</p>
                 <input type="hidden" ng-model="$ctrl.ingredients">
                 
@@ -84,10 +87,20 @@ angular.module("recipesApp")
                 that.serving_size = res.data.numberOfServings;
                 that.source_url = res.data.source.sourceRecipeUrl;
                 that.ingredients = res.data.ingredientLines;
+                that.photo = res.data.images[0].hostedLargeUrl;
             })
         }
         this.addRecipe = function() {
-            httpService.addRecipe(this.recipe);
+            var recipeToSave = {
+                name: this.name,
+                photo: this.photo,
+                source_url: this.source_url,
+                serving_size: this.serving_size,
+                ingredients: this.ingredients,
+                instructions: this.instructions,
+                health_labels: [null]
+            }
+            httpService.addRecipe(recipeToSave)
         };
     }
 })
