@@ -3,6 +3,9 @@ angular.module("recipesApp")
 	this.indexRecipes = function () {
 		return $http.get("/api");
 	}
+    this.getRecipe = function(id) {
+        return $http.get("/api/" + id);
+    }
     this.recipeFromApiKeyword = function (keyword) {
         return $http.get("/api/yummly-keyword/" + keyword);
     }

@@ -93,6 +93,30 @@ router.get('/yummly-id/:id', function (req, res, next) {
 	}).end();
 });
 
+router.get("/:id", function (req, res, next) {
+	var options = {
+		host: "localhost",
+		port: 3000,
+		path: "/recipes/" + req.params.id,
+		method: "get"
+	};
+	http.request(options, function(response) {
+		var body = '';
+
+		//another chunk of data has been recieved, so append it to `str`
+		response.on('data', function (chunk) {
+			body += chunk;
+			});
+
+		//the whole response has been recieved, so we just print it out here
+		response.on('end', function () {
+			var parsed = JSON.parse(body)
+			res.json(parsed);
+			console.log(parsed);
+		});
+	}).end();
+})
+
 router.post('/', function (req, res, next) {
 	console.log("About to send Post request");
 	console.log(req.body)
