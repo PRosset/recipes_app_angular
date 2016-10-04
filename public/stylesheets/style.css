@@ -126,6 +126,7 @@ a {
   background: #B02E0C;
   border-radius: 7px;
   width: 10%;
+  color: #E9E8EA;
   text-align: center;
   transition: .25s;
   cursor: pointer;
@@ -152,6 +153,11 @@ a {
   background-color: #313638;
   color: #E9E8EA;
 }
+
+.photoContainer {
+  max-height: 240px;
+}
+
 .recipeInfo h1, .recipeInfo p {
   margin: 10px;
 }
@@ -160,8 +166,36 @@ a {
   display: flex;
 }
 
-.direction {
+.direction,
+.instructions {
   width: 710px;
+  background: #E0DFD5;
+}
+
+.instructions h2 {
+  margin: 0;
+  padding-top: 20px;
+}
+
+.ingredientsContainer {
+  padding: 0;
+  margin: 0;
+  width: 706px;
+  background-color: #414749;
+  border: 2px #313638 solid;
+  color: #E9E8EA;
+  min-height: 100px;
+  max-height: 200px;
+}
+.ingredients {
+  column-count: 3
+}
+
+.ingredientsContainer h2,
+.ingredients ul,
+.instruction h3,
+.instructions h2 {
+  margin-left: 10px;
 }
 
 .note {
@@ -170,7 +204,7 @@ a {
   margin-left: 20px;
   width: 150px;
   height: 150px;
-  border: 1px black solid;
+  border: 1px #C1C062 solid;
   background: #FFFD82;
 }
 
@@ -179,7 +213,7 @@ a {
   transform: rotate(-3deg);
   transform: translateY(10px);
   margin-left: 20px;
-  border: 1px black solid;
+  border: 1px #C1C062 solid;
   width: 150px;
   height: 150px;
   background: #FFFD82;
