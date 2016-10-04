@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   padding-left: 15%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #E9E8EA;
@@ -62,10 +61,20 @@ a {
   border-bottom: 1px #E9E8EA solid;
 }
 
+.iconSVG {
+  fill: #B02E0C;
+  width: 25%;
+}
+
 /* SPLASH PAGE */
 
 .splashPage {
-  width: 1000px;
-  height: 100vh;
-  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image:url('/images/splashpage_img.jpeg');
+  background-size: 100%;
 }

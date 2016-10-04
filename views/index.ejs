@@ -11,6 +11,7 @@
     <script src="javascripts/http-service.js"></script>
     <script src="javascripts/form.js"></script>
     <script src="javascripts/index.js"></script>
+    <script src="javascripts/home.js"></script>
   </head>
   <body ng-app="recipesApp">
     <div class="navBar">
@@ -19,8 +20,23 @@
       </div>
       <ul class="navLinks">
         <li><a ui-sref="home">Home</a></li>
-        <li><a ui-sref="recipes">Recipes</a></li>
-        <li><a ui-sref="form">Form</a></li>
+        <li>
+          <a ui-sref="recipes">Recipes</a>
+        </li>
+        <li>
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 70.7 90.5" style="enable-background:new 0 0 70.7 90.5;" xml:space="preserve" class="iconSVG">
+          <g>
+            <path d="M8.5,0C3.8,0,0,3.8,0,8.5v62.4c0,4.7,3.8,8.5,8.5,8.5h23.2v11.2l8.5-5l8.5,5V79.3h17.7V67.1h4.3V0H8.5z M61.7,74.6h-13
+              v-3.4h-17v3.4H8.5c-2.1,0-3.8-1.7-3.8-3.8c0-2.1,1.7-3.8,3.8-3.8h53.2V74.6z M66,62.4H14.8V4.7H66V62.4z"/>
+            <polygon points="35.4,55.1 45.4,55.1 45.4,41.5 59,41.5 59,31.5 45.4,31.5 45.4,18 35.4,18 35.4,31.5 21.9,31.5 21.9,41.5
+              35.4,41.5   "/>
+          </g>
+          </svg>
+          <br/>
+          <a ui-sref="form">Form</a>
+        </li>
       </ul>
     </div>
     <div ui-view></div>
