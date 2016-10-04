@@ -1,13 +1,31 @@
 angular.module("recipesApp")
 .component("show", {
-    template: `
-        <h1>This is the recipes view</h1>
-        <div ng-repeat="recipe in $ctrl.recipes">
-            <p>{{recipe.name}}</p>
-            <p>{{recipe.serving_size}}</p>
-            <img ng-src={{recipe.photo}} />
-            <p ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</p>
-            <p ng-repeat="instruction in recipe.instructions">{{instruction}}</p>
+  template: `
+    <div class="addNoteBtn"><h3>Add Note</h3></div>
+    <div class="recipeHeader">
+      <div class="photoContainer"><img src="/images/corn.jpg"></div>
+      <div class="recipeInfo">
+        <h1>Street Corn Street Corn Street Corn</h1>
+        <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab.</p>
+      </div>
+    </div>
+    <div class="ingredientsContainer">
+      <h2>Ingredients</h2>
+      <ul class="ingredients">
+        <li class="ingredient">Test</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <div class="instruction">
+        <div class="direction">
+          <h3>1) this is an instruction</h3>
         </div>
-    `
+        <div class="noteHolder">
+          <div class="note"></div>
+          <div class="note1"></div>
+        </div>
+      </div>
+    </div>
+  `
 });
