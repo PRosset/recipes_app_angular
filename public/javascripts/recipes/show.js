@@ -11,9 +11,11 @@ angular.module("recipesApp")
     </div>
     <div class="ingredientsContainer">
       <h2>Ingredients</h2>
-      <ul class="ingredients">
-        <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</li>
-      </ul>
+      <div class="ingredientsSection">
+        <ul class="ingredients">
+          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</li>
+        </ul>
+      </div>
     </div>
     <div class="instructions">
       <h2>Instructions</h2>
@@ -35,7 +37,7 @@ angular.module("recipesApp")
     this.recipe = null;
 
     this.addingNote = false;
-    
+
     this.toggleAddingNote = function() {
       this.addingNote = this.addingNote == false ? true : false;
     }
