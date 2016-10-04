@@ -6,7 +6,7 @@ angular.module("recipesApp", ["ui.router"])
     $stateProvider
     .state("home", {
         url: "/home",
-        template: "<h3>This is the home view</h3>"
+        template: "<home-page></home-page>"
     })
     .state("recipes", {
         url: "/recipes",
