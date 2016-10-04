@@ -1,4 +1,4 @@
-angular.module("recipesApp", ["ui.router"])
+angular.module("recipesApp", ["ui.router", "ng-token-auth"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -20,4 +20,12 @@ angular.module("recipesApp", ["ui.router"])
         url: "/recipes/:id",
         template: "<show></show>"
     })
+    .state("register", {
+        url: "/register",
+        template: "<register-user></register-user>"
+    })
+    // .state("login", {
+    //     url: "/login",
+    //     template: "<login-user></login-user>"
+    // })
 });
