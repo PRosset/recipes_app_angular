@@ -8,7 +8,7 @@ angular.module("recipesApp")
         <button ng-show="$ctrl.recipeIndex > 0" ng-click="$ctrl.decRecipe()">Previous</button>
         <button ng-show="$ctrl.recipeIndex < $ctrl.recipeNumber" ng-click="$ctrl.incRecipe()">Next</button>
         <h3>{{$ctrl.recipeIndex}}</h3>
-        <form name="form" ng-submit="$ctrl.addRecipe(form)" novalidate>
+        
             
             <p>Name: {{$ctrl.name}}</p>
             <input type="hidden" ng-model="$ctrl.name">
@@ -27,7 +27,10 @@ angular.module("recipesApp")
                 <p>Source URL: {{$ctrl.source_url}}</p>
                 <input type="hidden" ng-model="$ctrl.source_url">
                 
-                <p ng-repeat="ingredient in $ctrl.ingredients">{{ingredient}}</p>
+                <p>Health Labels: {{$ctrl.health_labels}}</p>
+                <input type="hidden" ng-model="$ctrl.health_labels">
+                
+                <p ng-repeat="ingredient in $ctrl.ingredients track by $index">{{ingredient}}</p>
                 <input type="hidden" ng-model="$ctrl.ingredients">
                 
                 <label>Instructions</label>
@@ -39,9 +42,8 @@ angular.module("recipesApp")
 
                 <button ng-click="$ctrl.incInstructions()">Add Instruction Step</button>
 
-                <button type="submit">Submit Recipe</button>
-            </div
-        </form>
+                <button ng-click="$ctrl.addRecipe()">Submit Recipe</button>
+            </div>
     `,
     controller: function (httpService) {
         var that = this;
@@ -84,10 +86,20 @@ angular.module("recipesApp")
                 that.serving_size = res.data.numberOfServings;
                 that.source_url = res.data.source.sourceRecipeUrl;
                 that.ingredients = res.data.ingredientLines;
+                that.photo = res.data.images[0].hostedLargeUrl;
             })
         }
         this.addRecipe = function() {
-            httpService.addRecipe(this.recipe);
+            var recipeToSave = {
+                name: this.name,
+                photo: this.photo,
+                source_url: this.source_url,
+                serving_size: this.serving_size,
+                ingredients: this.ingredients,
+                instructions: this.instructions,
+                health_labels: ["some shit"]
+            }
+            httpService.addRecipe(recipeToSave)
         };
     }
 })
