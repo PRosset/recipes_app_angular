@@ -1,6 +1,7 @@
 angular.module("recipesApp")
 .component("show", {
   template: `
+  <div class="showContainer">
     <div class="addNoteBtn"><h3>Add Note</h3></div>
     <div class="recipeHeader">
       <div class="photoContainer"><img src="/images/corn.jpg"></div>
@@ -11,9 +12,11 @@ angular.module("recipesApp")
     </div>
     <div class="ingredientsContainer">
       <h2>Ingredients</h2>
-      <ul class="ingredients">
-        <li class="ingredient">Test</li>
-      </ul>
+      <div class="ingredientsSection">
+        <ul class="ingredients">
+          <li class="ingredient">Test</li>
+        </ul>
+      </div>
     </div>
     <div class="instructions">
       <h2>Instructions</h2>
@@ -27,5 +30,6 @@ angular.module("recipesApp")
         </div>
       </div>
     </div>
+  </div>
   `
 });
