@@ -17,7 +17,9 @@ angular.module("recipesApp")
     </div>
     <div class="instructions">
       <h2>Instructions</h2>
-      <div class="instruction" ng-repeat="instruction in $ctrl.recipe.instructions track by $index">
+      <div  class="instruction"
+            ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
+            ng-click="$ctrl.addNote($event)" >
         <div class="direction">
           <h3>{{$index}}: {{instruction}}</h3>
         </div>
@@ -38,8 +40,8 @@ angular.module("recipesApp")
       this.addingNote = this.addingNote == false ? true : false;
     }
 
-    this.addNote = function() {
-      //
+    this.addNote = function(event) {
+      // $(event.currentTarget).
     }
 
     httpService.getRecipe($stateParams.id)
