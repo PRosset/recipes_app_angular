@@ -21,12 +21,40 @@ a {
   height: 100vh;
   transition: .2s;
 }
-.navBar:hover {
+/*.navBar:hover {
   width: 10.25%;
-}
+}*/
 .navBar h3 {
   color: #E9E8EA;
   text-transform: uppercase;
+}
+
+.SVGicon {
+  fill: #B02E0C;
+  width: 25%;
+  transition: .75s;
+}
+.navLink {
+  padding-top: 30px;
+  color: #B02E0C;
+  transition: .75s;
+  cursor: pointer;
+}
+.navLink h4 {
+  padding: 0;
+  margin: 5px;
+  transition: .75s;
+  text-transform: uppercase;
+}
+.navLink:hover h4 {
+  color: #E9E8EA;
+  font-weight: 800;
+  transform: scale(1.1);
+}
+
+.navLink:hover .SVGicon {
+  fill: #E9E8EA;
+  transform: scale(1.1);
 }
 
 
@@ -40,36 +68,44 @@ a {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image:url('/images/splashpage_img.jpeg');
+  background-image:url('/images/cake_splash.jpeg');
   background-size: 100%;
 }
-
-
-/* TEST */
-
-.SVGicon {
-  fill: #B02E0C;
-  width: 25%;
-  transition: .5s;
+.splashFade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100%;
+  background-color: rgba(0, 0, 0, .5);
 }
-.navLink {
-  padding-top: 20px;
-  color: #B02E0C;
-  transition: .5s;
+
+.splashPage h1 {
+  color: #E9E8EA;
+  text-align: center;
+  padding-top: 50px;
+}
+.accountBtn {
+  display: inline-block;
+  margin: 5px;
+  background: #B02E0C;
+  border-radius: 7px;
+  width: 10%;
+  text-align: center;
+  transition: .25s;
   cursor: pointer;
 }
-.navLink h4 {
-  padding: 0;
-  margin: 5px;
-  transition: .5s;
-  text-transform: uppercase;
-}
-.navLink:hover h4 {
-  color: #E9E8EA;
+
+.accountBtn:hover {
   transform: scale(1.1);
 }
 
-.navLink:hover .SVGicon {
-  fill: #E9E8EA;
-  transform: scale(1.1);
+.accountBtn:active {
+  background: #EA3C10;
+}
+
+.accountBtn h3 {
+  text-transform: uppercase;
+  color: #E9E8EA;
 }

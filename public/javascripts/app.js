@@ -16,4 +16,8 @@ angular.module("recipesApp", ["ui.router"])
         url: "/form",
         template: "<form-page></form-page>"
     })
+    .state("show", {
+        url: "/recipes/:id",
+        template: "<show></show>"
+    })
 });

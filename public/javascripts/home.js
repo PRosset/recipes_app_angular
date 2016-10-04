@@ -2,16 +2,11 @@ angular.module("recipesApp")
 .component("homePage", {
   template: `
     <div class="splashPage">
-      <h1>Hello</h1>
+      <div class="splashFade">
+        <h1>Hello</h1>
+        <div class="accountBtn"><h3>Sign Up</h3></div>
+        <div class="accountBtn"><h3>Login</h3></div>
+      </div>
     </div>
-  `,
-  controller: function (httpService) {
-    this.recipes = null;
-
-    httpService.indexRecipes()
-    .then(function(res) {
-      console.log(res.data);
-      that.recipes = res.data;
-    })
-  }
+  `
 });
