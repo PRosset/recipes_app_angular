@@ -94,7 +94,40 @@ router.get('/yummly-id/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+	console.log("About to send Post request");
 	console.log(req.body)
+	var options = {
+		host: "localhost",
+		port: 3000,
+		path: "/recipes",
+		method: "post",
+		json: true,
+    	headers: {
+        	"content-type": "application/json",
+    	},
+    	body: JSON.stringify(req.body)
+	};
+	http.request(options, function(response) {
+		console.log("Request sent to Rails API!");
+		
+	  	var body = '';
+
+		//another chunk of data has been recieved, so append it to `str`
+		response.on('data', function (chunk) {
+			body += chunk;
+			});
+
+		//the whole response has been recieved, so we just print it out here
+		response.on('end', function () {
+			var parsed = JSON.parse(body)
+			res.json(parsed);
+			console.log(parsed);
+		});
+	}).end();
+	// var parsed = JSON.parse(req.body);
+	// request.write(parsed);
+	// console.log("Sent!")
+	// request.end();
 })
 
 module.exports = router;

@@ -10,6 +10,6 @@ angular.module("recipesApp")
     	return $http.get("/api/yummly-id/" + id);
     }
     this.addRecipe = function (recipe) {
-        return $http.post("/api");
+        return $http.post("/api", recipe);
     }
 })

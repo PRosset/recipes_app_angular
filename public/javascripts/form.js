@@ -8,7 +8,7 @@ angular.module("recipesApp")
         <button ng-show="$ctrl.recipeIndex > 0" ng-click="$ctrl.decRecipe()">Previous</button>
         <button ng-show="$ctrl.recipeIndex < $ctrl.recipeNumber" ng-click="$ctrl.incRecipe()">Next</button>
         <h3>{{$ctrl.recipeIndex}}</h3>
-        <form name="form" ng-submit="$ctrl.addRecipe(form)" novalidate>
+        
             
             <p>Name: {{$ctrl.name}}</p>
             <input type="hidden" ng-model="$ctrl.name">
@@ -42,9 +42,8 @@ angular.module("recipesApp")
 
                 <button ng-click="$ctrl.incInstructions()">Add Instruction Step</button>
 
-                <button type="submit">Submit Recipe</button>
-            </div
-        </form>
+                <button ng-click="$ctrl.addRecipe()">Submit Recipe</button>
+            </div>
     `,
     controller: function (httpService) {
         var that = this;
