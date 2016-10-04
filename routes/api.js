@@ -101,11 +101,10 @@ router.post('/', function (req, res, next) {
 		port: 3000,
 		path: "/recipes",
 		method: "post",
-		json: true,
+		// json: true,
     	headers: {
-        	"content-type": "application/json",
-    	},
-    	body: JSON.stringify(req.body)
+        	"Content-Type": "application/json",
+    	}
 	};
 	http.request(options, function(response) {
 		console.log("Request sent to Rails API!");
@@ -123,7 +122,7 @@ router.post('/', function (req, res, next) {
 			res.json(parsed);
 			console.log(parsed);
 		});
-	}).end();
+	}).end(JSON.stringify(req.body));
 	// var parsed = JSON.parse(req.body);
 	// request.write(parsed);
 	// console.log("Sent!")

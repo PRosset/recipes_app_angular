@@ -97,7 +97,7 @@ angular.module("recipesApp")
                 serving_size: this.serving_size,
                 ingredients: this.ingredients,
                 instructions: this.instructions,
-                health_labels: [null]
+                health_labels: ["some shit"]
             }
             httpService.addRecipe(recipeToSave)
         };
