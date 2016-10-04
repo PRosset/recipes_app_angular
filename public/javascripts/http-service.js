@@ -3,8 +3,11 @@ angular.module("recipesApp")
 	this.indexRecipes = function () {
 		return $http.get("/api");
 	}
-    this.recipeFromApi = function (keyword) {
-        return $http.get("/api/yummly/" + keyword);
+    this.recipeFromApiKeyword = function (keyword) {
+        return $http.get("/api/yummly-keyword/" + keyword);
+    }
+    this.recipeFromApiId = function (id) {
+    	return $http.get("/api/yummly-id/" + id);
     }
     this.addRecipe = function (recipe) {
         // return $http.post(" address for our own Node server ", recipe)
