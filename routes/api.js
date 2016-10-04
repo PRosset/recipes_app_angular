@@ -93,4 +93,8 @@ router.get('/yummly-id/:id', function (req, res, next) {
 	}).end();
 });
 
+router.post('/', function (req, res, next) {
+	console.log(req.body)
+})
+
 module.exports = router;
