@@ -15,30 +15,32 @@ angular.module("recipesApp")
 
             <img ng-src="{{$ctrl.photo}}" />
 
-            <button ng-click="$ctrl.searchApiId()">Complete this recipe!</button>
+            <button ng-show="!$ctrl.oneRecipe" ng-click="$ctrl.searchApiId()">Complete this recipe!</button>
             
-            <p>Photo URL: {{$ctrl.photo}}</p>
-            <input type="hidden" ng-model="$ctrl.photo">
-            
-            <p>Serving size: {{$ctrl.recipe.serving_size}}</p>
-            <input type="hidden" ng-model="$ctrl.recipe.serving_size">
-            
-            <p>Source URL: {{recipe.source_url}}</p>
-            <input type="hidden" ng-model="$ctrl.recipe.source_url">
-            
-            <p ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</p>
-            <input type="hidden" ng-model="$ctrl.recipe.ingredients">
-            
-            <label>Instructions</label>
-            <input type="textarea" ng-repeat="instruction in $ctrl.instructions track by $index"  ng-model="$ctrl.instructions[$index]">
-            
-            <p ng-repeat="instruction in $ctrl.instructions track by $index">
-                {{$index}} : {{instruction}}
-            </p>
+            <div ng-show="$ctrl.oneRecipe">
+                <p>Photo URL: {{$ctrl.photo}}</p>
+                <input type="hidden" ng-model="$ctrl.photo">
+                
+                <p>Serving size: {{$ctrl.serving_size}}</p>
+                <input type="hidden" ng-model="$ctrl.serving_size">
+                
+                <p>Source URL: {{$ctrl.source_url}}</p>
+                <input type="hidden" ng-model="$ctrl.source_url">
+                
+                <p ng-repeat="ingredient in $ctrl.ingredients">{{ingredient}}</p>
+                <input type="hidden" ng-model="$ctrl.ingredients">
+                
+                <label>Instructions</label>
+                <input type="textarea" ng-repeat="instruction in $ctrl.instructions track by $index"  ng-model="$ctrl.instructions[$index]">
+                
+                <p ng-repeat="instruction in $ctrl.instructions track by $index">
+                    {{$index}} : {{instruction}}
+                </p>
 
-            <button ng-click="$ctrl.incInstructions()">Add Instruction Step</button>
+                <button ng-click="$ctrl.incInstructions()">Add Instruction Step</button>
 
-          <button type="submit">Submit Recipe</button>
+                <button type="submit">Submit Recipe</button>
+            </div
         </form>
     `,
     controller: function (httpService) {
@@ -50,11 +52,13 @@ angular.module("recipesApp")
         this.recipeIndex = 0;
         this.incRecipe = function() {
             this.recipeIndex+=1;
+            this.oneRecipe = null;
             this.name = this.recipes === null ? null : this.recipes[this.recipeIndex].recipeName;
             this.photo = this.recipes === null ? null : this.recipes[this.recipeIndex].imageUrlsBySize["90"];
         };
         this.decRecipe = function() {
             this.recipeIndex-=1;
+            this.oneRecipe = null;
             this.name = this.recipes === null ? null : this.recipes[this.recipeIndex].recipeName;
             this.photo = this.recipes === null ? null : this.recipes[this.recipeIndex].imageUrlsBySize["90"];
         };
@@ -77,6 +81,9 @@ angular.module("recipesApp")
             .then(function(res) {
                 console.log(res.data)
                 that.oneRecipe = res.data;
+                that.serving_size = res.data.numberOfServings;
+                that.source_url = res.data.source.sourceRecipeUrl;
+                that.ingredients = res.data.ingredientLines;
             })
         }
         this.addRecipe = function() {
