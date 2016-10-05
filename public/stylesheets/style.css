@@ -16,7 +16,6 @@ a {
   top: 0;
   left: 0;
   background-color: #011638;
-  border-right: 2px #0343AA solid;
   width: 10%;
   height: 100vh;
   transition: .2s;
@@ -176,12 +175,15 @@ a {
 
 .instruction {
   display: flex;
+  padding: 0 10px;
 }
 
 .direction,
 .instructions {
   width: 710px;
   background: #E0DFD5;
+  transition: .3s;
+  transition-delay: .3s;
 }
 
 .instructions h2 {
@@ -197,17 +199,24 @@ a {
   border: 2px #313638 solid;
   color: #E9E8EA;
   min-height: 100px;
-  max-height: 200px;
 }
 .ingredients {
-  column-count: 3
+  column-count: 3;
+  list-style: inside disc;
+  padding: 10px;
 }
+
 
 .ingredientsContainer h2,
 .ingredients ul,
 .instruction h3,
 .instructions h2 {
   margin-left: 10px;
+}
+
+.ingredient {
+  padding-left: 2em;
+  text-indent: -2em;
 }
 
 .note {
@@ -290,10 +299,13 @@ a {
 
 .addingNote {
   cursor: pointer;
+  transition: .3s;
 }
 
-.addingNote:hover {
-  border: solid 1px white;
+.addingNote:hover .direction {
+  background-color: #E0DCB3;
+  transition-delay: .3s;
+  transition: 1s;
 }
 
 .visible {

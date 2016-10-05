@@ -1,7 +1,7 @@
 angular.module("recipesApp")
 .component("show", {
   template: `
-    <div class="addNoteBtn" ng-click="$ctrl.toggleAddingNote()"><h3>Add Note</h3></div>
+    <div class="addNoteBtn" ng-click="$ctrl.toggleAddingNote()"><h3 ng-hide="$ctrl.addingNote">Add Note</h3><h3 ng-show="$ctrl.addingNote">Cancel<h3></div>
     <div class="recipeHeader">
       <div class="photoContainer"><img ng-src={{$ctrl.recipe.photo}}></div>
       <div class="recipeInfo">
@@ -86,9 +86,9 @@ angular.module("recipesApp")
     httpService.getRecipe($stateParams.id)
     .then(function(res) {
       that.recipe = res.data;
-      that.getNotes();        
+      that.getNotes();
     })
 
-    
+
   }
 });
