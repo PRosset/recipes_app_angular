@@ -180,10 +180,14 @@ a {
 
 .direction,
 .instructions {
-  width: 710px;
+  width: 708px;
   background: #E0DFD5;
   transition: .3s;
   transition-delay: .3s;
+}
+
+.instructions {
+  border: 1px #313638 solid;
 }
 
 .instructions h2 {
