@@ -25,7 +25,6 @@ angular.module("recipesApp")
         </div>
         <div class="noteHolder">
           <div class="note"></div>
-          <div class="note1"></div>
         </div>
       </div>
     </div>

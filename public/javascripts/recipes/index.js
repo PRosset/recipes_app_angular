@@ -1,23 +1,30 @@
 angular.module("recipesApp")
 .component("indexPage", {
     template: `
-        <h1>This is the recipes view</h1>
-        <div ng-repeat="recipe in $ctrl.recipes">
-            <p>{{recipe.name}}</p>
-            <p>{{recipe.serving_size}}</p>
-            <img ng-src={{recipe.photo}} />
-            <p ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</p>
-            <p ng-repeat="instruction in recipe.instructions">{{instruction}}</p>
+      <input type="text" class="recipeSearch" ng-model="search" placeholder="Search for a recipe">
+      <div class="recipeGrid">
+        <div class="recipeCard"  ng-click="$ctrl.show(recipe.id)" ng-repeat="recipe in $ctrl.recipes | filter: search">
+          <div class="recipeCont" style="background-image: url({{recipe.photo}}); background-color: rgba(0,0,0,.5);">
+            <div class="recipeCover">
+              <h2>{{recipe.name}}</h2>
+            </div>
+          </div>
         </div>
+      </div>
     `,
-    controller: function (httpService) {
-        var that = this;
-        this.recipes = null;
-        
-        httpService.indexRecipes()
-        .then(function(res) {
-            console.log(res.data);
-            that.recipes = res.data;
-        })
-    }
+  controller: function (httpService, $state) {
+    var that = this;
+    this.recipes = null;
+
+    httpService.indexRecipes()
+    .then(function(res) {
+      console.log(res.data);
+      that.recipes = res.data;
+    })
+
+    this.show = function(id) {
+      console.log("I was clicked");
+      $state.go('show', { id: id });
+    };
+  }
 });
