@@ -170,13 +170,13 @@ router.post('/recipe', function (req, res, next) {
 })
 
 
-router.post('/note', function (req, res, next) {
+router.post('/note/:id', function (req, res, next) {
 	console.log("About to send Post request");
 	console.log(req.body)
 	var options = {
 		host: "localhost",
 		port: 3000,
-		path: "/notes",
+		path: "/recipes/" + req.params.id + "/notes",
 		method: "post",
     	headers: {
         	"Content-Type": "application/json",
