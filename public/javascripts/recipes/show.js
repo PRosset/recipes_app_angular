@@ -21,7 +21,8 @@ angular.module("recipesApp")
       <h2>Instructions</h2>
       <div  class="instruction"
             ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
-            ng-click="$ctrl.addNote($index)" >
+            ng-click="$ctrl.addNote($index)"
+            ng-class="{addingNote : $ctrl.addingNote}" >
         <div class="direction">
           <h3>{{$index + 1}}: {{instruction}}</h3>
         </div>
@@ -50,8 +51,9 @@ angular.module("recipesApp")
     }
 
     this.addNote = function(index) {
-      // $(event.currentTarget).children(".noteEnter").addClass("enterActive");
-      this.instForNote = index;
+      if (this.addingNote) {
+        this.instForNote = index;
+      }
     }
 
     this.saveNote = function(index) {
@@ -67,20 +69,22 @@ angular.module("recipesApp")
     .then(function(res) {
       that.recipe = res.data;
       that.instForNote = null;
+
+      httpService.getNotes($stateParams.id)
+      .then(function(res) {
+        var notes = res.data;
+
+        that.recipe.instructions.forEach(function(instruction) {
+          that.notes.push([]);
+        })
+
+        notes.forEach(function(note) {
+          that.notes[note.instruction].push(note);
+        })
+        console.log(that.notes)
+      })  
     })
 
-    httpService.getNotes($stateParams.id)
-    .then(function(res) {
-      var notes = res.data;
-
-      that.recipe.instructions.forEach(function(instruction) {
-        that.notes.push([]);
-      })
-
-      notes.forEach(function(note) {
-        that.notes[note.instruction].push(note);
-      })
-      console.log(that.notes)
-    })  
+    
   }
 });
