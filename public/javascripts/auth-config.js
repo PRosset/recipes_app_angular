@@ -1,7 +1,7 @@
 angular.module("recipesApp")
 .config(function($authProvider) {
 	$authProvider.configure({
-		apiUrl:                  'localhost:3000', //HAVE TO FIX
+		apiUrl:                  '/proxy', //HAVE TO FIX
     tokenValidationPath:     '/auth/validate_token',
     signOutUrl:              '/auth/sign_out',
     emailRegistrationPath:   '/auth',

@@ -20,12 +20,12 @@ angular.module("recipesApp", ["ui.router", "ng-token-auth"])
         url: "/recipes/:id",
         template: "<show></show>"
     })
+    .state("login", {
+        url: "/login",
+        template: "<login-user></login-user>"
+    })
     .state("register", {
         url: "/register",
         template: "<register-user></register-user>"
     })
-    // .state("login", {
-    //     url: "/login",
-    //     template: "<login-user></login-user>"
-    // })
 });
