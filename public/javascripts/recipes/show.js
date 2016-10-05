@@ -13,7 +13,7 @@ angular.module("recipesApp")
       <h2>Ingredients</h2>
       <div class="ingredientsSection">
         <ul class="ingredients">
-          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</li>
+          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients track by $index">{{ingredient}}</li>
         </ul>
       </div>
     </div>
