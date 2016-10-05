@@ -26,7 +26,7 @@ angular.module("recipesApp")
           <h3>{{$index + 1}}: {{instruction}}</h3>
         </div>
         <div class="noteHolder">
-          <div class="note"></div>
+          <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
         </div>
         <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
           <input ng-model="$ctrl.noteText">
@@ -38,6 +38,8 @@ angular.module("recipesApp")
   controller: function($stateParams, httpService) {
     var that = this;
     this.recipe = null;
+
+    this.notes = [];
 
     this.addingNote = false;
 
@@ -69,8 +71,16 @@ angular.module("recipesApp")
 
     httpService.getNotes($stateParams.id)
     .then(function(res) {
-      console.log(res.data);
-    })
-    
+      var notes = res.data;
+
+      that.recipe.instructions.forEach(function(instruction) {
+        that.notes.push([]);
+      })
+
+      notes.forEach(function(note) {
+        that.notes[note.instruction].push(note);
+      })
+      console.log(that.notes)
+    })  
   }
 });
