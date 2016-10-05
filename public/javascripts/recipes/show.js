@@ -21,7 +21,7 @@ angular.module("recipesApp")
       <h2>Instructions</h2>
       <div class="instruction" ng-repeat="instruction in $ctrl.recipe.instructions track by $index">
         <div class="direction">
-          <h3>{{$index}}: {{instruction}}</h3>
+          <h3>{{$index + 1}}: {{instruction}}</h3>
         </div>
         <div class="noteHolder">
           <div class="note"></div>
