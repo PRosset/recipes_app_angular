@@ -268,3 +268,17 @@ a {
   margin: 20px auto;
   padding: 5px;
 }
+
+.noteEnter {
+  position: absolute;
+  margin-left: 20px;
+  width: 250px;
+  height: 250px;
+  background: #FFFD82;
+  z-index: 3;
+  display:none;
+}
+
+.visible {
+  display: inline-block !important;
+}
