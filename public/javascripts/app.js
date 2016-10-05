@@ -1,4 +1,4 @@
-angular.module("recipesApp", ["ui.router"])
+angular.module("recipesApp", ["ui.router", "ngAnimate"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
