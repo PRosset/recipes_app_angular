@@ -33,6 +33,8 @@ angular.module("recipesApp")
           <button ng-click="$ctrl.saveNote($index)">Add note</button>
         </div>
       </div>
+      <div class="recipeFooter">
+      </div>
     </div>
   `,
   controller: function($stateParams, httpService) {
@@ -47,6 +49,7 @@ angular.module("recipesApp")
 
     this.toggleAddingNote = function() {
       this.addingNote = this.addingNote == false ? true : false;
+      this.instForNote = null;
     }
 
     this.addNote = function(index) {

@@ -1,16 +1,35 @@
 <div class="recipeHeader">
-  <div class="photoContainer"><img src="/images/corn.jpg"></div>
-  <div class="recipeInfo">
-    <h1>Street Corn</h1>
-    <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.</p>
-  </div>
-</div>
-<div class="ingredientsContainer">
-  <ul class="ingredients">
-    <li class="ingredient">Test</li>
-  </ul>
-</div>
-<div class="instruction">
-  <p>1) This is an instruction</p>
-  <div class="note"></div>
-</div>
+      <div class="photoContainer"><img ng-src={{$ctrl.recipe.photo}}></div>
+      <div class="recipeInfo">
+        <h1>{{$ctrl.recipe.name}}</h1>
+        <p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab.</p>
+      </div>
+    </div>
+    <div class="ingredientsContainer">
+      <h2>Ingredients</h2>
+      <div class="ingredientsSection">
+        <ul class="ingredients">
+          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients track by $index">{{ingredient}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <div  class="instruction"
+            ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
+            ng-class="{addingNote : $ctrl.addingNote}" >
+        <div class="direction" ng-click="$ctrl.addNote($index)">
+          <h3>{{$index + 1}}: {{instruction}}</h3>
+        </div>
+        <div class="noteHolder">
+          <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
+        </div>
+        <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
+          <input ng-model="$ctrl.noteText">
+          <button ng-click="$ctrl.saveNote($index)">Add note</button>
+        </div>
+      </div>
+      <div class="recipeFooter">
+      </div>
+    </div>
+    <div test=""></div>

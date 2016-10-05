@@ -188,8 +188,14 @@ a {
 
 .instructions {
   border: 1px #313638 solid;
+  min-height: 30vh;
 }
 
+.recipeFooter {
+  width: 708px;
+  height: 80px;
+  background: #E0DFD5;
+}
 .instructions h2 {
   margin: 0;
   padding-top: 20px;
@@ -231,18 +237,6 @@ a {
   height: 150px;
   border: 1px #C1C062 solid;
   background: #FFFD82;
-}
-
-.note1 {
-  position: absolute;
-  transform: rotate(-3deg);
-  transform: translateY(10px);
-  margin-left: 20px;
-  border: 1px #C1C062 solid;
-  width: 150px;
-  height: 150px;
-  background: #FFFD82;
-  z-index: -1;
 }
 
 /* RECIPE INDEX PAGE */
@@ -303,11 +297,14 @@ a {
 .noteEnter {
   position: absolute;
   margin-left: 20px;
+  right: 5%;
   width: 250px;
   height: 250px;
+  border: 2px #C1C062 solid;
   background: #FFFD82;
   z-index: 3;
   display:none;
+  transform: translateY(-50px);
 }
 
 .addingNote {
@@ -322,6 +319,7 @@ a {
 }
 
 .visible {
+  position: absolute;
   display: inline-block !important;
 }
 
