@@ -73,14 +73,14 @@ angular.module("recipesApp")
     this.saveNote = function(index) {
       var note = {
         text: this.noteText,
-        instruction: index,
-        recipe_id: parseInt($stateParams.id)
+        instruction: index
       }
-      httpService.saveNote(note)
+      httpService.saveNote(note, $stateParams.id)
       .then(function() {
         that.getNotes();
       })
       that.instForNote = null;
+      that.addingNote = false;
     }
 
     httpService.getRecipe($stateParams.id)
