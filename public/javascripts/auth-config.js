@@ -12,7 +12,7 @@ angular.module("recipesApp")
     passwordUpdatePath:      '/auth/password',
     passwordResetSuccessUrl: window.location.href,
     emailSignInPath:         '/auth/sign_in',
-    storage:                 'cookies',
+    storage:                 'window.localStorage',
     forceValidateToken:      false,
     validateOnPageLoad:      true,
     proxyIf:                 function() { return false; },

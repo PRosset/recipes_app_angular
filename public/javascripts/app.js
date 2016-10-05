@@ -2,7 +2,7 @@ angular.module("recipesApp", ["ui.router", "ng-token-auth"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/recipes")
+  $urlRouterProvider.otherwise("/home")
     $stateProvider
     .state("home", {
         url: "/home",
@@ -10,7 +10,12 @@ angular.module("recipesApp", ["ui.router", "ng-token-auth"])
     })
     .state("recipes", {
         url: "/recipes",
-        template: "<index-page></index-page>"
+        template: "<index-page></index-page>",
+        // resolve: {
+        //   auth: function($auth) {
+        //     return $auth.validateUser();
+        //   }
+        // }
     })
     .state("form", {
         url: "/form",
