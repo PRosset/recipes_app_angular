@@ -13,7 +13,7 @@ angular.module("recipesApp")
       <h2>Ingredients</h2>
       <div class="ingredientsSection">
         <ul class="ingredients">
-          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients">{{ingredient}}</li>
+          <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients track by $index">{{ingredient}}</li>
         </ul>
       </div>
     </div>
@@ -21,12 +21,12 @@ angular.module("recipesApp")
       <h2>Instructions</h2>
       <div  class="instruction"
             ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
-            ng-click="$ctrl.addNote($index)" >
-        <div class="direction">
+            ng-class="{addingNote : $ctrl.addingNote}" >
+        <div class="direction" ng-click="$ctrl.addNote($index)">
           <h3>{{$index + 1}}: {{instruction}}</h3>
         </div>
         <div class="noteHolder">
-          <div class="note"></div>
+          <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
         </div>
         <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
           <input ng-model="$ctrl.noteText">
@@ -39,6 +39,8 @@ angular.module("recipesApp")
     var that = this;
     this.recipe = null;
 
+    this.notes = [];
+
     this.addingNote = false;
 
     this.instForNote = null;
@@ -48,8 +50,24 @@ angular.module("recipesApp")
     }
 
     this.addNote = function(index) {
-      // $(event.currentTarget).children(".noteEnter").addClass("enterActive");
-      this.instForNote = index;
+      if (this.addingNote) {
+        this.instForNote = index;
+      }
+    }
+
+    this.getNotes = function() {
+      httpService.getNotes($stateParams.id)
+      .then(function(res) {
+        var notes = res.data;
+
+        that.recipe.instructions.forEach(function(instruction) {
+          that.notes.push([]);
+        })
+
+        notes.forEach(function(note) {
+          that.notes[note.instruction].push(note);
+        })
+      })
     }
 
     this.saveNote = function(index) {
@@ -59,12 +77,18 @@ angular.module("recipesApp")
         recipe_id: parseInt($stateParams.id)
       }
       httpService.saveNote(note)
+      .then(function() {
+        that.getNotes();
+      })
+      that.instForNote = null;
     }
 
     httpService.getRecipe($stateParams.id)
     .then(function(res) {
-      console.log(res.data);
       that.recipe = res.data;
+      that.getNotes();        
     })
+
+    
   }
 });

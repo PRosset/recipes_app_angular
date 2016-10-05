@@ -288,6 +288,14 @@ a {
   display:none;
 }
 
+.addingNote {
+  cursor: pointer;
+}
+
+.addingNote:hover {
+  border: solid 1px white;
+}
+
 .visible {
   display: inline-block !important;
 }
