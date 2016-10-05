@@ -21,9 +21,8 @@ angular.module("recipesApp")
       <h2>Instructions</h2>
       <div  class="instruction"
             ng-repeat="instruction in $ctrl.recipe.instructions track by $index"
-            ng-click="$ctrl.addNote($index)"
             ng-class="{addingNote : $ctrl.addingNote}" >
-        <div class="direction">
+        <div class="direction" ng-click="$ctrl.addNote($index)">
           <h3>{{$index + 1}}: {{instruction}}</h3>
         </div>
         <div class="noteHolder">
@@ -56,20 +55,7 @@ angular.module("recipesApp")
       }
     }
 
-    this.saveNote = function(index) {
-      var note = {
-        text: this.noteText,
-        instruction: index,
-        recipe_id: parseInt($stateParams.id)
-      }
-      httpService.saveNote(note)
-    }
-
-    httpService.getRecipe($stateParams.id)
-    .then(function(res) {
-      that.recipe = res.data;
-      that.instForNote = null;
-
+    this.getNotes = function() {
       httpService.getNotes($stateParams.id)
       .then(function(res) {
         var notes = res.data;
@@ -81,8 +67,26 @@ angular.module("recipesApp")
         notes.forEach(function(note) {
           that.notes[note.instruction].push(note);
         })
-        console.log(that.notes)
-      })  
+      })
+    }
+
+    this.saveNote = function(index) {
+      var note = {
+        text: this.noteText,
+        instruction: index,
+        recipe_id: parseInt($stateParams.id)
+      }
+      httpService.saveNote(note)
+      .then(function() {
+        that.getNotes();
+      })
+      that.instForNote = null;
+    }
+
+    httpService.getRecipe($stateParams.id)
+    .then(function(res) {
+      that.recipe = res.data;
+      that.getNotes();        
     })
 
     
