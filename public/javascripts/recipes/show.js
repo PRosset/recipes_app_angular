@@ -63,8 +63,14 @@ angular.module("recipesApp")
 
     httpService.getRecipe($stateParams.id)
     .then(function(res) {
-      console.log(res.data);
       that.recipe = res.data;
+      that.instForNote = null;
     })
+
+    httpService.getNotes($stateParams.id)
+    .then(function(res) {
+      console.log(res.data);
+    })
+    
   }
 });
