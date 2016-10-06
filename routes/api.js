@@ -19,12 +19,9 @@ var http = require('http');
 
 // Index of recipes
 router.get('/', function(req, res, next) {
-	var options = {
-		host: "localhost",
-		port: 3000,
-		path: "/recipes",
-		method: "get"
-	};
+	var options = require('/config.json')[app.get['env']];
+	options.path =  "/recipes";
+	options.method = "get";
 	http.request(options, function(response) {
 		var body = '';
 
@@ -118,12 +115,9 @@ router.get("/notes/:id", function (req, res, next) {
 })
 
 router.get("/:id", function (req, res, next) {
-	var options = {
-		host: "localhost",
-		port: 3000,
-		path: "/recipes/" + req.params.id,
-		method: "get"
-	};
+	var options = require('/config.json')[app.get['env']];
+	options.path = "/recipes/" + req.params.id;
+	options.method = "get";
 	http.request(options, function(response) {
 		var body = '';
 
@@ -143,15 +137,12 @@ router.get("/:id", function (req, res, next) {
 
 router.post('/recipe', function (req, res, next) {
 	console.log(req.body)
-	var options = {
-		host: "localhost",
-		port: 3000,
-		path: "/recipes",
-		method: "post",
-    	headers: {
+	var options = require('/config.json')[app.get['env']];
+	options.path = "/recipes";
+	options.method = "post";
+    options.headers = {
         	"Content-Type": "application/json",
-    	}
-	};
+    };
 	http.request(options, function(response) {
 		
 	  	var body = '';
@@ -171,17 +162,12 @@ router.post('/recipe', function (req, res, next) {
 
 
 router.post('/note/:id', function (req, res, next) {
-	console.log("About to send Post request");
-	console.log(req.body)
-	var options = {
-		host: "localhost",
-		port: 3000,
-		path: "/recipes/" + req.params.id + "/notes",
-		method: "post",
-    	headers: {
+	var options = require('/config.json')[app.get['env']];
+	options.path = "/recipes/" + req.params.id + "/notes";
+	options.method = "post";
+    options.headers = {
         	"Content-Type": "application/json",
-    	}
-	};
+    };
 	http.request(options, function(response) {
 		console.log("Request sent to Rails API!");
 		
