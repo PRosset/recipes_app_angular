@@ -21,6 +21,9 @@ angular.module("recipesApp")
     this.saveNote = function (note, recipeId) {
         return $http.post("/api/note/" + recipeId, note);
     }
+    this.editNote = function (note) {
+        return $http.put("/api/note/edit", note)
+    }
     this.favRecipe = function (recipe) {
         return $http.put("/api/togglefav", recipe);
     }

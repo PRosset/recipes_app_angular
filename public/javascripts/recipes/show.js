@@ -53,7 +53,13 @@ angular.module("recipesApp")
               <h3>{{$index + 1}}: {{instruction}}</h3>
             </div>
             <div class="noteHolder">
-              <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">{{$index}} : {{note.text}}</div>
+              <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">
+                <p class="noteText">{{note.text}}</p>
+                <div class="editNote">
+                  <input ng-model="note.text">
+                  <button ng-click="$ctrl.editNote(note)">Edit</button>
+                </div>
+              </div>
             </div>
             <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
               <input ng-model="$ctrl.noteText">
@@ -122,6 +128,13 @@ angular.module("recipesApp")
       })
       that.instForNote = null;
       that.addingNote = false;
+    }
+
+    this.editNote = function(note) {
+      httpService.editNote(note)
+      .then(function(res) {
+        console.log(res);
+      })
     }
 
     httpService.getRecipe($stateParams.id)

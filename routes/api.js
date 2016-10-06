@@ -178,7 +178,41 @@ router.put("/togglefav", function (req, res, next) {
 			"Content-Type": "application/json"
 		};
 
-	console.log(options.path);
+	http.request(options, function(response) {
+
+	  	var body = '';
+
+		//another chunk of data has been recieved, so append it to `str`
+		response.on('data', function (chunk) {
+			body += chunk;
+			});
+
+		//the whole response has been recieved, so we just print it out here
+		response.on('end', function () {
+			var parsed = JSON.parse(body)
+			res.json(parsed);
+		});
+	}).end(JSON.stringify(req.body));
+
+})
+
+router.put("/note/edit", function (req, res, next) {
+		if (process.env.NODE_ENV == undefined) {
+			var options = {
+				host: "localhost",
+				port: 3000
+			};
+		} else {
+			var options = {
+				host: "mycookbook-api.herokuapp.com"
+			};
+		}
+		options.path = "/recipes/" + req.body.recipe_id + "/notes/" + req.body.id;
+		options.method = "put";
+		options.headers = {
+			"Content-Type": "application/json"
+		};
+
 	http.request(options, function(response) {
 
 	  	var body = '';
