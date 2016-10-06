@@ -210,6 +210,10 @@ a {
   cursor: not-allowed;
 }
 
+.disabled:active {
+  background: darkgrey;
+}
+
 .addNoteBtn {
   position: fixed;
   width: 10%;
@@ -325,7 +329,7 @@ a {
 }
 
 .recipeCover {
-  /*background-color: rgba(0,0,0,.32);*/
+  background-color: rgba(0,0,0,.32);
   background-size: 100% 100%;
   width: 100%;
   height: 100%;
@@ -334,7 +338,7 @@ a {
 }
 
 .recipeCover h2 {
-  background-color: rgba(0,0,0,.5);
+  /*background-color: rgba(0,0,0,.5);*/
   width: 100%;
 }
 
@@ -544,6 +548,7 @@ input:focus {
   height: 60px;
 }
 .pagination h3 {
+  text-align: center;
   width: 40%;
 }
 
@@ -565,4 +570,51 @@ input:focus {
 
 .instList b {
   padding-right: 5px;
+}
+
+.favIconContainer {
+  position: relative;
+  top: 1.5%;
+}
+.favIcon {
+  position: absolute;
+  right: 3%;
+  width: 40px;
+  height: 40px;
+  fill: rgba(232, 233, 235, .8);
+  transition: .5s;
+}
+
+.favIcon:hover {
+  transform: scale(1.2);
+  fill: #A1A2A3;
+  stroke-width: 2px;
+  transition: .5s;
+}
+
+.favIcon:active {
+  transform: scale(1.1);
+  fill: #E0DFD5;
+  transition: .5s;
+}
+
+.faved {
+  position: absolute;
+  right: 3%;
+  width: 40px;
+  height: 40px;
+  fill: rgba(239, 74, 33, .9);
+  transition: .5s;
+}
+
+.faved:hover {
+  transform: scale(1.2);
+  fill: #F06543;
+  transition: .5s;
+}
+
+.faved:active {
+  transform: scale(1.1);
+  fill: #F09D51;
+  transition: .5s;
 }

@@ -7,6 +7,7 @@ angular.module("recipesApp")
         <div class="recipeHead">
           <div class="recipePhoto" style="background-image: url({{$ctrl.recipe.photo}});">
 
+
           </div>
           <div class="recipeDesc">
             <h1>{{$ctrl.recipe.name}}</h1>
@@ -52,7 +53,7 @@ angular.module("recipesApp")
               <h3>{{$index + 1}}: {{instruction}}</h3>
             </div>
             <div class="noteHolder">
-              <div class="note" ng-repeat="note in $ctrl.notes[$index]" track by $index style="{transform: translateX({{$index * 50}}px);}">{{$index}} : {{note.text}}</div>
+              <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">{{$index}} : {{note.text}}</div>
             </div>
             <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
               <input ng-model="$ctrl.noteText">
@@ -128,7 +129,5 @@ angular.module("recipesApp")
       that.recipe = res.data;
       that.getNotes();
     })
-
-
   }
 });
