@@ -424,7 +424,12 @@ main.ng-leave.ng-leave-active {
   height: 20px;
   padding: 5px;
   outline: none;
-  border: none;
+  border: 1px #E9E8EA solid;
+  transition: .5s;
+}
+
+.recipeSearch:focus {
+  border: 1px #313638 solid;
 }
 
 .clearSearch {
