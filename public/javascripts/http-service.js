@@ -27,4 +27,7 @@ angular.module("recipesApp")
     this.favRecipe = function (recipe) {
         return $http.put("/api/togglefav", recipe);
     }
+    this.deleteNote = function (noteId, recipeId) {
+        return $http.delete("/api/" + recipeId + "/note/" + noteId)
+    }
 })

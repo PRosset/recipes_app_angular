@@ -300,4 +300,23 @@ router.post('/note/:id', function (req, res, next) {
 	}).end(JSON.stringify(req.body));
 })
 
+router.delete("/:recipe/note/:note", function (req, res, next) {
+	console.log("Recieved delete request!");
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "mycookbook-api.herokuapp.com"
+		};
+	}
+	options.path = "/recipes/" + req.params.recipe + "/notes/" + req.params.note;
+	options.method = "delete";
+	http.request(options, function(response) {
+		res.sendStatus(200);
+	}).end();
+})
+
 module.exports = router;

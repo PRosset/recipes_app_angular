@@ -58,6 +58,7 @@ angular.module("recipesApp")
                 <div class="editNote">
                   <input ng-model="note.text">
                   <button ng-click="$ctrl.editNote(note)">Edit</button>
+                  <button ng-click="$ctrl.deleteNote(note.id)">Delete</button>
                 </div>
               </div>
             </div>
@@ -134,6 +135,15 @@ angular.module("recipesApp")
       httpService.editNote(note)
       .then(function(res) {
         console.log(res);
+      })
+    }
+
+    this.deleteNote = function(noteId) {
+      httpService.deleteNote(noteId, $stateParams.id)
+      .then(function(res) {
+        console.log(res);
+        that.notes = [];
+        that.getNotes();
       })
     }
 
