@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 		};
 	} else {
 		var options = {
-			host: "http://mycookbook-api.herokuapp.com"
+			host: "mycookbook-api.herokuapp.com"
 		};
 	}
 	options.path = "/recipes";
@@ -109,7 +109,7 @@ router.get("/notes/:id", function (req, res, next) {
 		};
 	} else {
 		var options = {
-			host: "http://mycookbook-api.herokuapp.com"
+			host: "mycookbook-api.herokuapp.com"
 		};
 	}
 	options.path = "/recipes/" + req.params.id + "/notes";
@@ -139,7 +139,7 @@ router.get("/:id", function (req, res, next) {
 		};
 	} else {
 		var options = {
-			host: "http://mycookbook-api.herokuapp.com"
+			host: "mycookbook-api.herokuapp.com"
 		};
 	}
 	options.path = "/recipes/" + req.params.id;
@@ -169,7 +169,7 @@ router.post('/recipe', function (req, res, next) {
 		};
 	} else {
 		var options = {
-			host: "http://mycookbook-api.herokuapp.com"
+			host: "mycookbook-api.herokuapp.com"
 		};
 	}
 	options.path = "/recipes";
@@ -203,7 +203,7 @@ router.post('/note/:id', function (req, res, next) {
 		};
 	} else {
 		var options = {
-			host: "http://mycookbook-api.herokuapp.com"
+			host: "mycookbook-api.herokuapp.com"
 		};
 	}
 	options.path = "/recipes/" + req.params.id + "/notes";
