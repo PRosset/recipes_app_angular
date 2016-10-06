@@ -19,9 +19,20 @@ var http = require('http');
 
 // Index of recipes
 router.get('/', function(req, res, next) {
-	var options = require('/config.json')[app.get['env']];
-	options.path =  "/recipes";
+	console.log("Node environment variable is " + process.env.NODE_ENV)
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "http://mycookbook-api.herokuapp.com"
+		};
+	}
+	options.path = "/recipes";
 	options.method = "get";
+	console.log(options)
 	http.request(options, function(response) {
 		var body = '';
 
@@ -91,12 +102,18 @@ router.get('/yummly-id/:id', function (req, res, next) {
 });
 
 router.get("/notes/:id", function (req, res, next) {
-	var options = {
-		host: "localhost",
-		port: 3000,
-		path: "/recipes/" + req.params.id + "/notes",
-		method: "get"
-	};
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "http://mycookbook-api.herokuapp.com"
+		};
+	}
+	options.path = "/recipes/" + req.params.id + "/notes";
+	options.method = "get";
 	http.request(options, function(response) {
 		var body = '';
 
@@ -115,7 +132,16 @@ router.get("/notes/:id", function (req, res, next) {
 })
 
 router.get("/:id", function (req, res, next) {
-	var options = require('/config.json')[app.get['env']];
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "http://mycookbook-api.herokuapp.com"
+		};
+	}
 	options.path = "/recipes/" + req.params.id;
 	options.method = "get";
 	http.request(options, function(response) {
@@ -136,13 +162,21 @@ router.get("/:id", function (req, res, next) {
 })
 
 router.post('/recipe', function (req, res, next) {
-	console.log(req.body)
-	var options = require('/config.json')[app.get['env']];
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "http://mycookbook-api.herokuapp.com"
+		};
+	}
 	options.path = "/recipes";
 	options.method = "post";
     options.headers = {
         	"Content-Type": "application/json",
-    };
+    	}
 	http.request(options, function(response) {
 		
 	  	var body = '';
@@ -162,12 +196,21 @@ router.post('/recipe', function (req, res, next) {
 
 
 router.post('/note/:id', function (req, res, next) {
-	var options = require('/config.json')[app.get['env']];
+	if (process.env.NODE_ENV == undefined) {
+		var options = {
+			host: "localhost",
+			port: 3000
+		};
+	} else {
+		var options = {
+			host: "http://mycookbook-api.herokuapp.com"
+		};
+	}
 	options.path = "/recipes/" + req.params.id + "/notes";
 	options.method = "post";
-    options.headers = {
-        	"Content-Type": "application/json",
-    };
+	options.headers = {
+    	"Content-Type": "application/json",
+	}
 	http.request(options, function(response) {
 		console.log("Request sent to Rails API!");
 		
