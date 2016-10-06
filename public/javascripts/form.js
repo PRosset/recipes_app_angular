@@ -7,40 +7,51 @@ angular.module("recipesApp")
       <div class="btn" ng-click="$ctrl.searchApiKeyword()">Search</div>
     </div>
     <div class="formSection pagination">
-      <div class="btn" ng-click="$ctrl.decRecipe()"><</div>
-        <h3>{{$ctrl.recipeIndex}}</h3>
-      <div class="btn" ng-click="$ctrl.incRecipe()">></div>
+      <div class="btn" ng-class="{disabled: ($ctrl.recipeIndex === 0)}" ng-click="$ctrl.decRecipe()"><</div>
+        <h3>{{$ctrl.name}}</h3>
+      <div class="btn" ng-class="{disabled: ($ctrl.recipeIndex === $ctrl.recipeNumber)}" ng-click="$ctrl.incRecipe()">></div>
     </div>
-    <h2>{{$ctrl.name}}</h2>
     <input type="hidden" ng-model="$ctrl.name">
     <img ng-src="{{$ctrl.photo}}" />
     <div class="btn recipeComplete" ng-show="!$ctrl.oneRecipe" ng-click="$ctrl.searchApiId()">Complete this recipe!</div>
     <div class="formSection">
       <div class="formContent">
         <div ng-show="$ctrl.oneRecipe">
-          <p>Photo URL: <a href="{{$ctrl.photo}}" target="_blank">Link</a></p>
+          <p><b>Photo URL:</b> <a href="{{$ctrl.photo}}" target="_blank">Link</a></p>
           <input type="hidden" ng-model="$ctrl.photo">
 
-          <p>Source URL: <a href="{{$ctrl.source_url}}" target="_blank">{{$ctrl.source_name}}</a></p>
+          <p><b>Source URL:</b> <a href="{{$ctrl.source_url}}" target="_blank">{{$ctrl.source_name}} Link</a></p>
           <input type="hidden" ng-model="$ctrl.source_url">
 
-          <p>Serving size: {{$ctrl.serving_size}}</p>
+          <p><b>Serving size:</b> {{$ctrl.serving_size}}</p>
           <input type="hidden" ng-model="$ctrl.serving_size">
+
+          <label><b>Description: </b></label>
+          <input class="instInput" type="textarea" ng-model="$ctrl.description">
 
           <input type="hidden" ng-model="$ctrl.health_labels">
 
-          <h3>Ingredients:</h3>
+          <label><b>Ingredients:</b></label>
           <ul>
             <li ng-repeat="ingredient in $ctrl.ingredients track by $index">{{ingredient}}</li>
           </ul>
-          <input class="instInput" type="textarea" ng-model="$ctrl.ingredients">
+          <input class="instInput" type="hidden" ng-model="$ctrl.ingredients">
           <div class="instTitle">
-            <h3>Instructions</h3>
+            <label><b>Instructions</b></label>
             <div class="btn" ng-click="$ctrl.incInstructions()">+</div>
             <div class="btn" ng-click="$ctrl.decInstructions()">-</div>
           </div>
           <div class="instList" ng-repeat="instruction in $ctrl.instructions track by $index">
             <b>{{$index + 1}}</b><input class="instInput" type="textarea" ng-model="$ctrl.instructions[$index]" placeholder="Add an instruction...">
+          </div>
+
+          <div class="instTitle">
+            <label><b>Labels:</b></label>
+            <div class="btn" ng-click="$ctrl.incLabels()">+</div>
+            <div class="btn" ng-click="$ctrl.decLabels()">-</div>
+          </div>
+          <div ng-repeat="label in $ctrl.labels track by $index">
+            <input type="text" ng-model="$ctrl.labels[$index]" placeholder="Add label...">
           </div>
           <div class="formSection">
           <div class="btn recipeComplete" ng-click="$ctrl.addRecipe()">Submit Recipe</div>
@@ -80,6 +91,15 @@ angular.module("recipesApp")
         this.decInstructions = function () {
           this.instructions.pop();
         }
+
+        this.labels = [""];
+        this.incLabels = function () {
+          this.labels.push("");
+        };
+        this.decLabels = function () {
+          this.labels.pop();
+        };
+
         this.searchApiKeyword = function() {
             httpService.recipeFromApiKeyword(this.searchTerm)
             .then(function(res) {
@@ -108,9 +128,10 @@ angular.module("recipesApp")
                 photo: this.photo,
                 source_url: this.source_url,
                 serving_size: this.serving_size,
+                description: this.description,
                 ingredients: this.ingredients,
                 instructions: this.instructions,
-                health_labels: ["some shit"]
+                labels: [this.labels]
             }
             httpService.addRecipe(recipeToSave)
         };

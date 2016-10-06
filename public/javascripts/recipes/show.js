@@ -52,7 +52,7 @@ angular.module("recipesApp")
               <h3>{{$index + 1}}: {{instruction}}</h3>
             </div>
             <div class="noteHolder">
-              <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
+              <div class="note" ng-repeat="note in $ctrl.notes[$index]" track by $index style="{transform: translateX({{$index * 50}}px);}">{{$index}} : {{note.text}}</div>
             </div>
             <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
               <input ng-model="$ctrl.noteText">
@@ -83,6 +83,10 @@ angular.module("recipesApp")
     this.toggleAddingNote = function() {
       this.addingNote = this.addingNote == false ? true : false;
       this.instForNote = null;
+    }
+
+    this.randRotate = function() {
+      return Math.floor((Math.random() * 20) + 1);
     }
 
     this.addNote = function(index) {
