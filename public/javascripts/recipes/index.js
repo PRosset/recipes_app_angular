@@ -1,7 +1,9 @@
 angular.module("recipesApp")
 .component("indexPage", {
     template: `
-      <input type="text" class="recipeSearch" ng-model="search" placeholder="Search for a recipe">
+      <div class="recipeSearchBar">
+        <input type="text" class="recipeSearch" ng-model="search" placeholder="Search for a recipe...">
+      </div>
       <div class="recipeGrid">
         <div class="recipeCard"  ng-click="$ctrl.show(recipe.id)" ng-repeat="recipe in $ctrl.recipes | filter: search">
           <div class="recipeCont" style="background-image: url({{recipe.photo}}); background-color: rgba(0,0,0,.5);">
