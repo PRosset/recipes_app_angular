@@ -77,7 +77,8 @@ a {
   bottom: 0;
   z-index: -1;
   background-image:url('/images/cake_splash.jpeg');
-  background-size: 100%;
+  background-position: center;
+  background-size: cover;
 }
 .splashFade {
   position: absolute;
@@ -90,6 +91,50 @@ a {
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.featureBullets {
+  column-count: 3;
+  list-style: none;
+  width: 60%;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.splashDivide {
+  width: 55%;
+}
+
+.featureBullets li {
+  width: 33%;
+}
+.featureBullets li h3,
+.featureBullets li {
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.SVGhome {
+  fill: #E9E8EA;
+  padding: 25px;
+  width: 25%;
+  transition: .75s;
+}
+.SVGbig {
+  width: 31%;
+}
+
+.siteDesc {
+  max-width: 50%;
 }
 
 .splashPage h1 {
@@ -102,7 +147,7 @@ a {
   margin: 5px;
   background: #F06543;
   border-radius: 7px;
-  width: 10%;
+  width: 100px;
   text-align: center;
   transition: .25s;
   cursor: pointer;
@@ -130,29 +175,46 @@ a {
 
 /* RECIPE SHOW PAGE */
 
-.addNoteBtn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30px;
+  width: 10%;
   margin: 5px;
   background: #F06543;
   border-radius: 7px;
-  width: 10%;
   color: #E9E8EA;
   text-align: center;
   transition: .25s;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.addNoteBtn:hover {
+.btn:hover {
   transform: scale(1.1);
   transition: .25s;
 }
 
-.addNoteBtn:active {
+.btn:active {
   background: #EA3C10;
   transform: scale(1.05);
   transition: .25s;
+}
+
+.disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+.addNoteBtn {
+  position: fixed;
+  width: 10%;
+  top: 20px;
+  right: 20px;
 }
 
 .recipeHeader {
@@ -236,7 +298,6 @@ a {
 }
 .note:hover .direction {
   background-color: #414749;
-  transition-delay: .3s;
   transition: 1s;
   border-radius: 10px;
 }
@@ -419,7 +480,7 @@ main.ng-leave.ng-leave-active {
   margin: 20px 29.5%;
   width: 100%;
 }
-.recipeSearch {
+input {
   width: 30%;
   height: 20px;
   padding: 5px;
@@ -428,7 +489,7 @@ main.ng-leave.ng-leave-active {
   transition: .5s;
 }
 
-.recipeSearch:focus {
+input:focus {
   border: 1px #313638 solid;
 }
 
@@ -448,4 +509,56 @@ main.ng-leave.ng-leave-active {
 }
 .clearSearch:active {
   background-color: yellow;
+}
+.formWrapper {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.formSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.formContent {
+  width: 80%;
+}
+
+.formContent ul {
+  column-count: 3;
+  list-style: inside disc;
+}
+
+.formContent ul li {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+.pagination {
+  width: 50%;
+  justify-content: space-around;
+}
+
+.recipeComplete {
+  margin: 30px;
+  height: 50px;
+  width: 40%;
+}
+
+.instInput {
+  width: 100%;
+}
+
+.instTitle,
+.instList {
+  display: flex;
+  align-items: center;
+}
+
+.instList b {
+  padding-right: 5px;
 }

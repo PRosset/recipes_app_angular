@@ -1,7 +1,7 @@
 angular.module("recipesApp")
 .component("show", {
   template: `
-    <div class="addNoteBtn" ng-click="$ctrl.toggleAddingNote()"><h3 ng-hide="$ctrl.addingNote">Add Note</h3><h3 ng-show="$ctrl.addingNote">Cancel<h3></div>
+    <div class="addNoteBtn btn" ng-click="$ctrl.toggleAddingNote()"><h3 ng-hide="$ctrl.addingNote">Add Note</h3><h3 ng-show="$ctrl.addingNote">Cancel<h3></div>
     <div class="sectionWrapper">
       <div class="sectionCont">
         <div class="recipeHead">
@@ -10,7 +10,7 @@ angular.module("recipesApp")
           </div>
           <div class="recipeDesc">
             <h1>{{$ctrl.recipe.name}}</h1>
-            <p>Lorem ipsum text</p>
+            <p><b>Serving size:</b> {{$ctrl.recipe.serving_size}}</p>
           </div>
         </div>
         <div class="noteCont">
