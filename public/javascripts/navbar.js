@@ -6,17 +6,20 @@ angular.module('recipesApp')
         <h3>Book of Recipes</h3>
       </div>
       <div class="navLink" ui-sref="home">
-        <?xml version="1.0" encoding="utf-8"?>
-        <svg version="1.1"
+        <svg class="SVGicon" version="1.1"
            id="Layer_1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 87.9 84"
-           style="enable-background:new 0 0 87.9 84;" xml:space="preserve" class="SVGicon">
-        <g transform="translate(0,-952.36218)">
-          <path d="M44,952.4c-0.4,0-0.8,0.2-1.3,0.5l-42,36c-0.6,0.5-0.9,1.5-0.6,2.2c0.3,0.8,1.1,1.3,1.9,1.3h11v42c0,1,1,2,2,2h58
-            c1,0,2-1,2-2v-42h11c0.8,0,1.6-0.5,1.9-1.3s0-1.7-0.6-2.2l-42-36C44.8,952.5,44.4,952.4,44,952.4z M44,957l36.6,31.4H73
-            c-1,0-2,1-2,2v42H17v-42c0-1-1-2-2-2H7.4L44,957z M30,994.4v12h12v-12H30z M46,994.4v12h12v-12H46z M30,1010.4v12h12v-12H30z
-             M46,1010.4v12h12v-12H46z"/>
-        </g>
+           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 106 101.3"
+           style="enable-background:new 0 0 106 101.3;" xml:space="preserve">
+          <g>
+            <rect x="53.6" y="67.5" width="17.5" height="17.5"/>
+            <rect x="35" y="48.9" width="17.5" height="17.5"/>
+            <rect x="53.6" y="48.9" width="17.5" height="17.5"/>
+            <rect x="35" y="67.5" width="17.5" height="17.5"/>
+            <path d="M104.5,42.9L55.6,1c-0.8-0.7-1.6-1-2.6-1c-0.9,0-1.7,0.4-2.4,0.8l-0.1,0.1l-49,42C0.2,44-0.4,46,0.3,47.4
+              C0.9,49,2.4,50,4.1,50h11.1v47.1c0,2.1,1.9,4.1,4.1,4.1h67.5c2.1,0,4.1-1.9,4.1-4.1V50h11.1c1.7,0,3.3-1.1,3.8-2.6
+              C106.3,45.8,105.8,44,104.5,42.9z M19.2,41.9h-4.1L53,9.4l37.9,32.5h-4.1c-2.1,0-4.1,1.9-4.1,4.1v47.1H23.3V46
+              C23.3,43.8,21.4,41.9,19.2,41.9z"/>
+          </g>
         </svg>
         <h4>Home</h4>
       </div>

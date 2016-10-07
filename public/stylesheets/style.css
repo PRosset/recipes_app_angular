@@ -1,6 +1,7 @@
 body {
   padding-left: 12%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1em;
+  font-family: 'Roboto', sans-serif;
   background-color: #E9E8EA;
 }
 
@@ -21,11 +22,11 @@ a {
   box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.5);
   transition: .2s;
 }
-/*.navBar:hover {
-  width: 10.25%;
-}*/
+
 .navBar h3 {
   color: #E9E8EA;
+  font-family: 'Catamaran', sans-serif;
+  margin-bottom: 0;
   text-transform: uppercase;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -37,6 +38,9 @@ a {
   fill: #F06543;
   width: 25%;
   transition: .75s;
+}
+.SVGicon .homeIcon {
+  width: 35%;
 }
 .navLink {
   padding-top: 30px;
@@ -291,7 +295,7 @@ a {
   border-radius: 5px;
   width: 125px;
   height: 75px;
-  font-size: .8em;
+  font-size: .7em;
   border: 1px #C1C062 solid;
   background: #FFFD82;
   transition: .5s;
@@ -750,9 +754,10 @@ input:focus {
   justify-content: space-between;
 }
 
-.recipeNameCont h1 {
-  padding: 0;
+.recipeNameCont h2 {
   margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 4px;
 }
 
 .recipeNameCont svg {

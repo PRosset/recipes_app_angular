@@ -9,7 +9,7 @@ angular.module("recipesApp")
           </div>
           <div class="recipeDesc">
           <div class="recipeNameCont">
-            <h1>{{$ctrl.recipe.name}}</h1>
+            <h2>{{$ctrl.recipe.name}}</h2>
             <svg ng-class="{showFavIcon: !$ctrl.recipe.favorite, showFaved: $ctrl.recipe.favorite}" ng-click="$ctrl.toggleFav($ctrl.recipe)"version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 68 68" style="enable-background:new 0 0 68 68;" xml:space="preserve">
               <g>
                 <path d="M41.7,20c0.2,0.5,0.5,0.9,0.7,1.2c0.7,0.9,1.9,1,2.8,0.3c0.9-0.7,1-1.9,0.3-2.8c0,0-0.1-0.1-0.2-0.3
