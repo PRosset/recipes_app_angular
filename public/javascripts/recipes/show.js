@@ -63,7 +63,7 @@ angular.module("recipesApp")
                   <div class="noteBtns">
                     <button ng-hide="$ctrl.noteToEdit === note.id" ng-click="$ctrl.noteToEdit = note.id">Edit</button>
                     <button ng-show="$ctrl.noteToEdit === note.id" ng-click="$ctrl.editNote(note)">Save</button>
-                    <div class="deleteBtn" ng-click="$ctrl.deleteNote(note.id)">X</div>
+                    <div class="noteBtn" ng-click="$ctrl.deleteNote(note.id)">X</div>
                   </div>
                 </div>
               </div>

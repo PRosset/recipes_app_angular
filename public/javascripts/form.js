@@ -12,7 +12,7 @@ angular.module("recipesApp")
       <div class="btn" ng-class="{disabled: ($ctrl.recipeIndex === $ctrl.recipeNumber)}" ng-click="$ctrl.incRecipe()">></div>
     </div>
     <input type="hidden" ng-model="$ctrl.name">
-    <img ng-src="{{$ctrl.photo}}" />
+    <img ng-show="$ctrl.photo" ng-src="{{$ctrl.photo}}" />
     <div class="btn recipeComplete" ng-show="!$ctrl.oneRecipe" ng-click="$ctrl.searchApiId()">Complete this recipe!</div>
     <div class="formSection">
       <div class="formContent">
@@ -134,6 +134,21 @@ angular.module("recipesApp")
                 labels: [this.labels]
             }
             httpService.addRecipe(recipeToSave)
+            .then(function(res) {
+              console.log(res);
+              that.searchTerm = "";
+              that.recipes = null;
+              that.oneRecipe = null;
+              that.name = null;
+              that.photo = null;
+              that.source_url = null;
+              that.ingredients = [""];
+              that.instructions = [""];
+              that.description = null;
+              that.source_url = null;
+              that.serving_size = null;
+              that.labels = [""];
+            })
         };
     }
 })
