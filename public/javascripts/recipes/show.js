@@ -146,6 +146,7 @@ angular.module("recipesApp")
       }
       httpService.saveNote(note, $stateParams.id)
       .then(function() {
+        console.log("Note is saved")
         that.instForNote = null;
         that.addingNote = false;
         that.noteText = null;
