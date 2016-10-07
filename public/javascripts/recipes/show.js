@@ -57,20 +57,20 @@ angular.module("recipesApp")
             </div>
             <div class="noteHolder">
               <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">
-                <p class="noteText" ng-hide="$ctrl.noteToEdit === note.id" ng-class="{">{{note.text}}</p>
+                <p class="noteText" ng-hide="$ctrl.noteToEdit === note.id">{{note.text}}</p>
                 <div class="editNote">
                   <textarea ng-show="$ctrl.noteToEdit === note.id" ng-model="note.text"></textarea>
                   <div class="noteBtns">
-                    <button ng-hide="$ctrl.noteToEdit === note.id" ng-click="$ctrl.noteToEdit = note.id">Edit</button>
-                    <button ng-show="$ctrl.noteToEdit === note.id" ng-click="$ctrl.editNote(note)">Save</button>
-                    <div class="noteBtn" ng-click="$ctrl.deleteNote(note.id)">X</div>
+                    <div class="noteBtn" ng-hide="$ctrl.noteToEdit === note.id" ng-click="$ctrl.noteToEdit = note.id">Edit</div>
+                    <div class="noteBtn" ng-show="$ctrl.noteToEdit === note.id" ng-click="$ctrl.editNote(note)">Save</div>
+                    <div class="noteBtn" ng-click="$ctrl.deleteNote(note.id)">Delete</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
               <textarea placeholder="Add your note here..." ng-model="$ctrl.noteText"></textarea>
-              <button ng-click="$ctrl.saveNote($index)">Add note</button>
+              <div class="noteBtn" ng-click="$ctrl.saveNote($index)">Add note</div>
             </div>
           </div>
         </div>

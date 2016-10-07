@@ -284,6 +284,9 @@ a {
 
 .note {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-left: 20px;
   border-radius: 5px;
   width: 125px;
@@ -291,6 +294,7 @@ a {
   font-size: .8em;
   border: 1px #C1C062 solid;
   background: #FFFD82;
+  overflow: hidden;
   transition: .5s;
 }
 .note:hover {
@@ -302,6 +306,15 @@ a {
   transition: 1s;
   border-radius: 10px;
 }
+
+.note .noteBtn {
+  opacity: 0;
+  transition: .5s;
+}
+
+.note:hover .noteBtn {
+  opacity: 1;
+}
 .note p {
   margin: 5px;
 }
@@ -310,6 +323,9 @@ a {
   margin: 3px;
   width: 90%;
   height: 40px;
+  border: 1px #C1C062 solid;
+  outline: none;
+  resize: none;
 }
 /* RECIPE INDEX PAGE */
 
@@ -392,31 +408,44 @@ a {
 .noteEnter textarea {
   width: 90%;
   background: #FFFCC5;
-  height: 90px;
+  height: 85px;
   padding: 10px;
   border: none;
   resize: none;
   font-size: 1.3em;
   outline: none;
 }
+
 .noteBtns {
   display: flex;
   height: 20px;
+  margin-bottom: 2px;
 }
-.noteBtns .deleteBtn {
+
+.noteBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 800;
-  border-radius: 5px;
+  min-width: 20px;
+  padding: 0 5px;
+  margin: 0 1px;
   height: 20px;
-  width: 20px;
-  background: red;
+  background: orange;
+  border-radius: 5px;
   transition: .5s;
+  cursor: pointer;
 }
-.deleteBtn:hover {
-  background-color: darkred;
+.noteEnter .noteBtn {
+  width: 50%;
+  margin: 0 auto;
+}
+.noteBtn:hover {
   transform: scale(1.1);
+  transition: .2s;
+}
+.noteBtn:active {
+  transform: scale(1.05);
+  transition: .2s;
 }
 
 @keyframes noteEnterAnim {
