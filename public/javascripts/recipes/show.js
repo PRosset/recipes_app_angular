@@ -151,9 +151,8 @@ angular.module("recipesApp")
       httpService.editNote(note)
       .then(function(res) {
         console.log(res);
+        that.noteToEdit = null;
       })
-
-      that.noteToEdit = null;
     }
 
     this.deleteNote = function(noteId) {

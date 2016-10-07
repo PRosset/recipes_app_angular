@@ -3,7 +3,7 @@ angular.module('recipesApp')
   template: `
     <div class="navBar">
       <div class="logo">
-        <h3>Recipe App</h3>
+        <h3>Book of Recipes</h3>
       </div>
       <div class="navLink" ui-sref="home">
         <?xml version="1.0" encoding="utf-8"?>

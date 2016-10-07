@@ -294,7 +294,6 @@ a {
   font-size: .8em;
   border: 1px #C1C062 solid;
   background: #FFFD82;
-  overflow: hidden;
   transition: .5s;
 }
 .note:hover {
@@ -317,6 +316,7 @@ a {
 }
 .note p {
   margin: 5px;
+  overflow-y: hidden;
 }
 .note textarea {
   background-color: #FFFCC5;
