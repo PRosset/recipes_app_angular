@@ -152,10 +152,10 @@ angular.module("recipesApp")
         that.getNotes()
         .then(function(res) {
           console.log("Notes are gotten");
-        });
-      })
-      .catch(function(err) {
-        console.log(err);
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
       })
     }
 
