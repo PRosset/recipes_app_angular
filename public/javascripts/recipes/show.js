@@ -101,6 +101,9 @@ angular.module("recipesApp")
       .then(function(res) {
         console.log(res);
       })
+      .catch(function(err) {
+        console.log(err);
+      })
     }
 
     this.toggleAddingNote = function() {
@@ -131,6 +134,9 @@ angular.module("recipesApp")
           that.notes[note.instruction].push(note);
         })
       })
+      .catch(function(err) {
+        console.log(err);
+      })
     }
 
     this.saveNote = function(index) {
@@ -156,6 +162,9 @@ angular.module("recipesApp")
         console.log(res);
         that.noteToEdit = null;
       })
+      .catch(function(err) {
+        console.log(err);
+      })
     }
 
     this.deleteNote = function(noteId) {
@@ -165,6 +174,9 @@ angular.module("recipesApp")
         that.notes = [];
         that.getNotes();
       })
+      .catch(function(err) {
+        console.log(err);
+      })
     }
 
     httpService.getRecipe($stateParams.id)
@@ -172,5 +184,8 @@ angular.module("recipesApp")
       that.recipe = res.data;
       that.getNotes();
     })
+    .catch(function(err) {
+        console.log(err);
+      })
   }
 });
