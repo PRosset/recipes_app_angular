@@ -57,12 +57,12 @@ angular.module("recipesApp")
             </div>
             <div class="noteHolder">
               <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">
-                <p class="noteText" ng-hide="$ctrl.editing">{{note.text}}</p>
+                <p class="noteText" ng-hide="$ctrl.noteToEdit === note.id" ng-class="{">{{note.text}}</p>
                 <div class="editNote">
-                  <textarea ng-show="$ctrl.editing" ng-model="note.text"></textarea>
+                  <textarea ng-show="$ctrl.noteToEdit === note.id" ng-model="note.text"></textarea>
                   <div class="noteBtns">
-                    <button ng-hide="$ctrl.editing" ng-click="$ctrl.editNote(note)">Edit</button>
-                    <button ng-show="$ctrl.editing" ng-click="$ctrl.editNote(note)">Save</button>
+                    <button ng-hide="$ctrl.noteToEdit === note.id" ng-click="$ctrl.noteToEdit = note.id">Edit</button>
+                    <button ng-show="$ctrl.noteToEdit === note.id" ng-click="$ctrl.editNote(note)">Save</button>
                     <div class="deleteBtn" ng-click="$ctrl.deleteNote(note.id)">X</div>
                   </div>
                 </div>
@@ -89,8 +89,6 @@ angular.module("recipesApp")
     this.recipe = null;
 
     this.notes = [];
-
-    this.editing = false;
 
     this.addingNote = false;
 
@@ -150,11 +148,12 @@ angular.module("recipesApp")
     }
 
     this.editNote = function(note) {
-      this.editing = !this.editing;
       httpService.editNote(note)
       .then(function(res) {
         console.log(res);
       })
+
+      that.noteToEdit = null;
     }
 
     this.deleteNote = function(noteId) {

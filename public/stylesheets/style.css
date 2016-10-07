@@ -381,7 +381,7 @@ a {
   margin-left: 20px;
   right: 5%;
   width: 200px;
-  height: 200px;
+  height: 130px;
   border: 2px #C1C062 solid;
   background: #FFFCC5;
   z-index: 3;
@@ -392,7 +392,7 @@ a {
 .noteEnter textarea {
   width: 90%;
   background: #FFFCC5;
-  height: 150px;
+  height: 90px;
   padding: 10px;
   border: none;
   resize: none;
