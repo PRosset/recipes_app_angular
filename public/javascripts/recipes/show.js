@@ -28,14 +28,8 @@ angular.module("recipesApp")
             </svg>
           </div>
             <p><b>Serving size:</b> {{$ctrl.recipe.serving_size}}</p>
+            <p>{{$ctrl.recipe.description}}</p>
           </div>
-        </div>
-        <div class="noteCont">
-          <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
-        </div>
-        <div class="noteEnter" ng-class="{visible: ($ctrl.instForNote === $index)}">
-          <input ng-model="$ctrl.noteText">
-          <button ng-click="$ctrl.saveNote($index)">Add Note</button>
         </div>
       </div>
     </div>
@@ -48,13 +42,6 @@ angular.module("recipesApp")
               <li class="ingredient" ng-repeat="ingredient in $ctrl.recipe.ingredients track by $index">{{ingredient}}</li>
             </ul>
           </div>
-        </div>
-        <div class="noteCont">
-          <div class="note" ng-repeat="note in $ctrl.notes[$index]">{{note.text}}</div>
-        </div>
-        <div class="noteEnter" ng-class="{visible: ($ctrl.instForNote === $index)}">
-          <input ng-model="$ctrl.noteText">
-          <button ng-click="$ctrl.saveNote($index)">Add Note</button>
         </div>
       </div>
     </div>
@@ -70,16 +57,19 @@ angular.module("recipesApp")
             </div>
             <div class="noteHolder">
               <div class="note" ng-repeat="note in $ctrl.notes[$index] track by $index">
-                <p class="noteText">{{note.text}}</p>
+                <p class="noteText" ng-hide="$ctrl.editing">{{note.text}}</p>
                 <div class="editNote">
-                  <input ng-model="note.text">
-                  <button ng-click="$ctrl.editNote(note)">Edit</button>
-                  <button ng-click="$ctrl.deleteNote(note.id)">Delete</button>
+                  <textarea ng-show="$ctrl.editing" ng-model="note.text"></textarea>
+                  <div class="noteBtns">
+                    <button ng-hide="$ctrl.editing" ng-click="$ctrl.editNote(note)">Edit</button>
+                    <button ng-show="$ctrl.editing" ng-click="$ctrl.editNote(note)">Save</button>
+                    <div class="deleteBtn" ng-click="$ctrl.deleteNote(note.id)">X</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="noteEnter" ng-class="{visible : ($ctrl.instForNote === $index)}">
-              <input ng-model="$ctrl.noteText">
+              <textarea placeholder="Add your note here..." ng-model="$ctrl.noteText"></textarea>
               <button ng-click="$ctrl.saveNote($index)">Add note</button>
             </div>
           </div>
@@ -99,6 +89,8 @@ angular.module("recipesApp")
     this.recipe = null;
 
     this.notes = [];
+
+    this.editing = false;
 
     this.addingNote = false;
 
@@ -154,9 +146,11 @@ angular.module("recipesApp")
       })
       that.instForNote = null;
       that.addingNote = false;
+      this.noteText = null;
     }
 
     this.editNote = function(note) {
+      this.editing = !this.editing;
       httpService.editNote(note)
       .then(function(res) {
         console.log(res);

@@ -57,8 +57,8 @@ angular.module("recipesApp")
           </li>
         </ul>
         <div class="splashBtns">
-          <div class="accountBtn"><h3>Sign Up</h3></div>
-          <div class="accountBtn"><h3>Login</h3></div>
+          <div ng-hide="true" class="accountBtn"><h3>Sign Up</h3></div>
+          <div ng-hide="true" class="accountBtn"><h3>Login</h3></div>
         </div>
       </div>
     </div>
