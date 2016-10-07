@@ -140,11 +140,14 @@ angular.module("recipesApp")
       }
       httpService.saveNote(note, $stateParams.id)
       .then(function() {
+        that.instForNote = null;
+        that.addingNote = false;
+        that.noteText = null;
         that.getNotes();
       })
-      that.instForNote = null;
-      that.addingNote = false;
-      this.noteText = null;
+      .catch(function(err) {
+        console.log(err);
+      })
     }
 
     this.editNote = function(note) {
