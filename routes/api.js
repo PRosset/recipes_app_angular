@@ -295,7 +295,6 @@ router.post('/note/:id', function (req, res, next) {
 		response.on('end', function () {
 			var parsed = JSON.parse(body)
 			res.json(parsed);
-			console.log(parsed);
 		});
 	}).end(JSON.stringify(req.body));
 })

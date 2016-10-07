@@ -149,7 +149,10 @@ angular.module("recipesApp")
         that.instForNote = null;
         that.addingNote = false;
         that.noteText = null;
-        that.getNotes();
+        that.getNotes()
+        .then(function(res) {
+          console.log("Notes are gotten");
+        });
       })
       .catch(function(err) {
         console.log(err);
