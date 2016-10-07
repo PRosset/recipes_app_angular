@@ -282,21 +282,7 @@ router.post('/note/:id', function (req, res, next) {
     	"Content-Type": "application/json",
 	}
 	http.request(options, function(response) {
-		console.log("Request sent to Rails API!");
-
-	  	var body = '';
-
-		//another chunk of data has been recieved, so append it to `str`
-		response.on('data', function (chunk) {
-			body += chunk;
-			});
-
-		//the whole response has been recieved, so we just print it out here
-		response.on('end', function () {
-			var parsed = JSON.parse(body)
-			res.json(parsed);
-			console.log(parsed);
-		});
+		res.sendStatus(200);
 	}).end(JSON.stringify(req.body));
 })
 
